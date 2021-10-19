@@ -10,11 +10,11 @@ module.exports = function() {
   let $ = cheerio.load(body)
   $('.news_list_ul li span').each((i, element) => {
     let text = $(element).text()
+    console.info(text)
     if (text.includes('晨和公寓')) {
     // if (text.includes('国庆放假')) {
       // 推送，接入WxPusher
       wxPusher('晨和公寓有更新')
-      console.info(text)
     }
   });
 }
