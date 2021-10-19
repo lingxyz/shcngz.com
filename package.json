@@ -1,9 +1,11 @@
 {
   "name": "shcngz.com",
   "version": "1.0.0",
-  "description": "",
+  "description": "公租房信息监听推送",
   "main": "news_list.js",
   "scripts": {
+    "prd": "pm2 start main.js --name '公租房信息监听推送'",
+    "restart-prd": "pm2 restart main.js --name '公租房信息监听推送'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
