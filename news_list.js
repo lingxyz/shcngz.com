@@ -1,5 +1,6 @@
 const cheerio = require("cheerio")
 const request = require("sync-request")
+const wxPusher = require("./lib/wxPusher")
 
 /**
  * 公告列表 关键词过滤并推送
@@ -11,9 +12,9 @@ module.exports = function() {
     let text = $(element).text()
     if (text.includes('晨和公寓')) {
     // if (text.includes('国庆放假')) {
-      // 推送，todo 接入WxPusher
-      console.log(text)
-
+      // 推送，接入WxPusher
+      wxPusher('晨和公寓有更新')
+      console.info(text)
     }
   });
 }
