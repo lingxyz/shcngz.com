@@ -4,6 +4,8 @@
   "description": "",
   "main": "news_list.js",
   "scripts": {
+    "prd": "pm2 start main.js --name '公租房监控助手'",
+    "restart-prd": "pm2 restart main.js --name '公租房监控助手'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
