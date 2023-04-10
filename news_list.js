@@ -10,11 +10,16 @@ module.exports = function() {
   let $ = cheerio.load(body)
   $('.news_list_ul li span').each((i, element) => {
     let text = $(element).text()
+    console.info(text)
     if (text.includes('晨和公寓')) {
-    // if (text.includes('国庆放假')) {
-      // 推送，接入WxPusher
-      wxPusher('晨和公寓有更新')
-      console.info(text)
+      // 加缓存，防止重复推送
+      global.cacheDB = global.cacheDB || {}
+      if (!global.cacheDB[text]) {
+        global.cacheDB[text] = 1
+        console.log('触发推送：', '晨和公寓有更新，标题为：' + text)
+        // 推送，接入WxPusher
+        wxPusher('晨和公寓有更新', text)
+      }
     }
   });
 }
